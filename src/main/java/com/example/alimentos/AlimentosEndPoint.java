@@ -67,21 +67,23 @@ public class AlimentosEndPoint{
     @ResponsePayload
     public BusquedaAlimentoPrecioResponse damePrecioAlimentos(@RequestPayload BusquedaAlimentoPrecioRequest peticion){
         BusquedaAlimentoPrecioResponse respuesta = new BusquedaAlimentoPrecioResponse();
-            Iterable<Alimentos> listaAlimentos = ialimentos.findAll();
+        Iterable<Alimentos> listaAlimentos = ialimentos.findAll();
+        boolean presupuesto=false;
     
         for(Alimentos ls : listaAlimentos){
             BusquedaAlimentoPrecioResponse.Notificacion notificacion = new BusquedaAlimentoPrecioResponse.Notificacion();
             Integer precioProductos=ls.getPrecio(); 
             Integer precioInsertado=peticion.getBusquedaPrecio();
                 if(precioInsertado >= precioProductos){
+                    presupuesto=true;
                     notificacion.setId(ls.getId());
                     notificacion.setNombre(ls.getNombre());
                     notificacion.setPrecio(ls.getPrecio());
                     respuesta.getNotificacion().add(notificacion);
-                }else{
-                    respuesta.setRespuesta("Saldo Insuficiente para Adquirir un Producto con  " + peticion.getBusquedaPrecio());               
                 }
         }
+        if(!presupuesto)
+            respuesta.setRespuesta("Saldo Insuficiente para Adquirir un Producto con  " + peticion.getBusquedaPrecio());  
         return respuesta;
     }
 
@@ -103,7 +105,6 @@ public class AlimentosEndPoint{
             alimentos.setCategoria(peticion.getCategoria());
             ialimentos.save(alimentos);
             respuesta.setRespuesta("Se modificó el alimento: " + peticion.getNombre());
-
         }else{
             respuesta.setRespuesta("Id no existe: " + peticion.getId());
         }
@@ -119,5 +120,4 @@ public class AlimentosEndPoint{
     
         return respuesta;
     }
-
 }

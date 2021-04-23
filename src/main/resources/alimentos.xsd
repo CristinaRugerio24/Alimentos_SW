@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://tell.me/alimentos" 
+    xmlns:tns="http://tell.me" elementFormDefault="qualified">
+
+    <element name="AnadirAlimentoRequest">
+        <complexType>
+            <sequence>
+                <element name="nombre" type="string"></element>
+                <element name="descripcion" type="string"></element>
+                <element name="precio" type="int"></element>
+                <element name="cantidad_existente" type="int"></element>
+                <element name="fecha_elaboracion" type="string"></element>
+                <element name="fecha_caducidad" type="string"></element>
+                <element name="categoria" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="AnadirAlimentoResponse">
+        <complexType>
+            <sequence>
+                <element name="respuesta" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="BusquedaAlimentoRequest">
+        <complexType>
+
+        </complexType>
+    </element>
+    <element name="BusquedaAlimentoResponse">
+        <complexType >
+            <sequence>
+                <element name="notificacion" maxOccurs="unbounded">
+                    <complexType>
+                        <sequence>
+                            <element name="id" type="int"></element>
+                            <element name="nombre" type="string"></element>
+                            <element name="descripcion" type="string"></element>
+                            <element name="precio" type="int"></element>
+                            <element name="cantidad_existente" type="int"></element>
+                            <element name="fecha_elaboracion" type="string"></element>
+                            <element name="fecha_caducidad" type="string"></element>
+                            <element name="categoria" type="string"></element>
+                        </sequence>
+                    </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="BusquedaAlimentoPrecioRequest">
+        <complexType>
+            <sequence>
+            <element name="busqueda_precio" type="int"></element>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="BusquedaAlimentoPrecioResponse">
+        <complexType >
+            <sequence>
+                <element name="notificacion" maxOccurs="unbounded">
+                    <complexType>
+                        <sequence>
+                            <element name="id" type="int"></element>
+                            <element name="nombre" type="string"></element>
+                            <element name="descripcion" type="string"></element>
+                            <element name="precio" type="int"></element>
+                            <element name="cantidad_existente" type="int"></element>
+                            <element name="fecha_elaboracion" type="string"></element>
+                            <element name="fecha_caducidad" type="string"></element>
+                            <element name="categoria" type="string"></element>
+                        </sequence>
+                    </complexType>
+                </element>
+                <element name="respuesta" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="ModificarAlimentoRequest">
+        <complexType>
+            <sequence>
+                <element name="id" type="int"></element>
+                <element name="nombre" type="string"></element>
+                <element name="descripcion" type="string"></element>
+                <element name="precio" type="int"></element>
+                <element name="cantidad_existente" type="int"></element>
+                <element name="fecha_elaboracion" type="string"></element>
+                <element name="fecha_caducidad" type="string"></element>
+                <element name="categoria" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="ModificarAlimentoResponse">
+        <complexType>
+            <sequence>
+                <element name="respuesta" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="EliminarAlimentoRequest">
+        <complexType>
+            <sequence>
+                <element name="id" type="int"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="EliminarAlimentoResponse">
+        <complexType>
+            <sequence>
+                <element name="respuesta" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+</schema>
